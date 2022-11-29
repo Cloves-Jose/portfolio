@@ -1,25 +1,35 @@
-.body {
-    height: 50em;
-    justify-content: center;
-    background: linear-gradient(to right, rgba(0,71,156,255), rgba(3,141,199,255), rgba(1,198,232,255));
+.container {
+    background: linear-gradient(to right, rgba(0,72,158,255), rgba(3,132,193,255), rgba(3,146,202,255), rgba(3,174,218,255));
 }
-.bodyCity {
-    background-color: red;
-    padding-left: 30em;
-    padding-top: 20em;
-    flex-direction: row;
 
+.root {
+    padding-left: 25em;
 }
-.bodySubtitle {
-    padding-top: 0.3em;
-    padding-bottom: 2em;
+
+.align-container {
+    background-color: red;
+    display: flex;
+    padding-left: 25em;
+    padding-top: 25em;
+    justify-content: space-between;
+    position: relative;
 }
-.titleCity {
-    font-size: 3em;
-    color: #fff;
+
+.degree {
+   padding-right: 50em;
+}
+
+.degreeTitle {
+    font-size: 5em;
     font-weight: 500;
-}
-.subtitleCity {
     color: #fff;
-    font-weight: 100;
+}
+
+.title {
+    color: #fff;
+    font-size: 4em;
+}
+
+.subTitle {
+    color: #fff;
 }
