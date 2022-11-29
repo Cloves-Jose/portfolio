@@ -1,0 +1,25 @@
+.body {
+    height: 50em;
+    justify-content: center;
+    background: linear-gradient(to right, rgba(0,71,156,255), rgba(3,141,199,255), rgba(1,198,232,255));
+}
+.bodyCity {
+    background-color: red;
+    padding-left: 30em;
+    padding-top: 20em;
+    flex-direction: row;
+
+}
+.bodySubtitle {
+    padding-top: 0.3em;
+    padding-bottom: 2em;
+}
+.titleCity {
+    font-size: 3em;
+    color: #fff;
+    font-weight: 500;
+}
+.subtitleCity {
+    color: #fff;
+    font-weight: 100;
+}
