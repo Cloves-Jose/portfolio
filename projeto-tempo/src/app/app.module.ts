@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http'
+import { FormsModule } from '@angular/forms'
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BodyComponent } from './components/template/body/body.component';
@@ -21,6 +23,8 @@ import { BodyComponent } from './components/template/body/body.component';
     MatButtonModule,
     MatIconModule,
     MatGridListModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
