@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http'
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BodyComponent } from './components/template/body/body.component';
 import { ButtonComponent } from './components/template/button/button.component';
+// import { MatTable } from '@angular/material/table'
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { ButtonComponent } from './components/template/button/button.component';
     MatGridListModule,
     HttpClientModule,
     MatAutocompleteModule,
-    FormsModule
+    FormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { WeatherData } from 'src/app/models/weather/weather.model';
 import { InputData } from 'src/app/models/input/city.model'
-// import { TableData } from 'src/app/models/table/table.model';
+import { TableData } from 'src/app/models/table/table.model';
 import { WatherService } from 'src/app/server/weather.service';
+import { MatTable } from '@angular/material/table';
+
+
+const ELEMENT_DATA: TableData[] = [
+  {id: '1', cidade: 'Garanhuns', temperatura: '20', chuva: '70', umidade: '80', vento: '3.09'}
+];
+
 
 @Component({
   selector: 'app-body',
@@ -10,23 +17,27 @@ import { WatherService } from 'src/app/server/weather.service';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-  // displayedColumns: string[] = ['Cidade', 'Temperatura', 'Chuva', 'Umidade', 'Vento', 'Ação']
-  // WeatherMock:any;
 
   constructor(private weatherService: WatherService) { }
 
   cityName: string = 'Natal';
   weatherData?: WeatherData;
   inputData?: InputData
-  // tableData?: TableData;
+  displayedColumns: string[] = ['id', 'cidade', 'temperatura', 'chuva', 'umidade', 'vento', 'acao'];
+  dataSource = [...ELEMENT_DATA];
 
+  @ViewChild(MatTable) table: MatTable<TableData>;
   
   ngOnInit(): void {
     this.getWheatherData(this.cityName)
   }
 
+  /**
+   * Vai receber o input da barra de pesquisa
+   */
   onSubmit() {
     this.getWheatherData(this.cityName)
+    this.addData()
     this.cityName = '';
   }
 
@@ -37,6 +48,23 @@ export class BodyComponent implements OnInit {
    */
   getCity(nameCity: string) {
     this.getWheatherData(nameCity)
+  }
+
+  /**
+   * Adiiciona os elementos na tabela
+   */
+  addData() {
+    const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
+    this.dataSource.push(ELEMENT_DATA[randomElementIndex]);
+    this.table.renderRows();
+  }
+
+  /**
+   * Remove os elementos da tabela
+   */
+  removeData() {
+    this.dataSource.pop();
+    this.table.renderRows();
   }
 
   /**
