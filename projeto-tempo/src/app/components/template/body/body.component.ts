@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherData } from 'src/app/models/weather/weather.model';
+import { InputData } from 'src/app/models/input/city.model'
+// import { TableData } from 'src/app/models/table/table.model';
 import { WatherService } from 'src/app/server/weather.service';
 
 @Component({
@@ -8,11 +10,15 @@ import { WatherService } from 'src/app/server/weather.service';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
+  // displayedColumns: string[] = ['Cidade', 'Temperatura', 'Chuva', 'Umidade', 'Vento', 'Ação']
+  // WeatherMock:any;
 
   constructor(private weatherService: WatherService) { }
 
-  cityName: string = 'Recife';
+  cityName: string = 'Natal';
   weatherData?: WeatherData;
+  inputData?: InputData
+  // tableData?: TableData;
 
   
   ngOnInit(): void {
@@ -25,18 +31,26 @@ export class BodyComponent implements OnInit {
   }
 
   /**
+   * Vai receber o nome da cidade 
+   * a partir dos botões
+   * @param nameCity 
+   */
+  getCity(nameCity: string) {
+    this.getWheatherData(nameCity)
+  }
+
+  /**
    * Realiza a consulta pelo nome 
    * de uma cidade
    * @param cityName 
    */
   private getWheatherData(cityName:string) {
-    // this.weatherService.getWeatherData(cityName)
-    // .subscribe({
-    //   next: (response: any) => {
-    //     this.weatherData = response
-    //     console.log(response)
-    //   }
-    // });
+    this.weatherService.getWeatherData(cityName)
+    .subscribe({
+      next: (response: any) => {
+        this.weatherData = response
+        console.log(response)
+      }
+    });
   }
-
 }

@@ -4,22 +4,93 @@
             <input type="text" placeholder="Digite uma cidade" name="city" [(ngModel)]="cityName">
         </form>
     </div>
-    <div class="root">
-        <h4>South America > Brasil > Pernambuco > Recife</h4>
-    </div>
-    <div class="align-container">
+    <div>
         <div class="subContainer">
             <div>
-                <h1 class="title">{{ weatherData.name }}</h1>
+                <div class="titleContainer">
+                    <h1 class="title">{{ weatherData.name }}</h1>
+                </div>
+                <div class="degreeContainer">
+                    <h1 class="degree">{{ (weatherData.main.temp - 273.15).toFixed(0) }}º</h1>
+                </div>
+                <div class="subtitleContainer">
+                    <div>
+                        <h3 class="subTitle">Umidade: {{weatherData.main.humidity}}%</h3>
+                    </div>
+                    <div>
+                        <h3 class="subTitle">Vento: {{weatherData.wind.speed}} km/h</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttonContainer">
+            <div>
+                <button 
+                mat-stroked-button class="buttonCity"
+                (click)="getCity('Recife')"
+                >Recife</button>
             </div>
             <div>
-                <h3 class="subTitle">3:48 PM / WEDNESDAY, JULY 1</h3>
+                <button 
+                mat-stroked-button class="buttonCity"
+                (click)="getCity('Fortaleza')"
+                >Fortaleza</button>
+            </div>
+            <div>
+                <button mat-stroked-button 
+                class="buttonCity"
+                (click)="getCity('Maceió')"
+                >Maceió</button>
+            </div>
+            <div>
+                <button 
+                mat-stroked-button 
+                class="buttonCity"
+                (click)="getCity('Sergipe')"
+                >Sergipe</button>
+            </div>
+            <div>
+                <button 
+                mat-stroked-button 
+                class="buttonCity"
+                (click)="getCity('João Pessoa')"
+                >João Pessoa</button>
             </div>
         </div>
-        <div class="degree">
-            <h1 class="degreeTitle">{{ (weatherData.main.temp - 273.15).toFixed(0) }}º</h1>
-        </div>
     </div>
+    <!-- <table mat-table class="mat-elevation-z8 demo-table">
+        <ng-container matColumnDef="position">
+            <th mat-header-cell>Id</th>
+            <td mat-cell>1</td>
+          </ng-container>
+        <ng-container matColumnDef="cidade">
+            <th mat-header-cell>Cidade</th>
+            <td mat-cell>Recife</td>
+        </ng-container>
+        <ng-container matColumnDef="temperatura">
+            <th mat-header-cell>Temperatura</th>
+            <td mat-cell>30º</td>
+        </ng-container>
+        <ng-container matColumnDef="chuva">
+            <th mat-header-cell>Chuva</th>
+            <td mat-cell>19%</td>
+        </ng-container>
+        <ng-container matColumnDef="umidade">
+            <th mat-header-cell>Umidade</th>
+            <td mat-cell>76%</td>
+        </ng-container>
+        <ng-container matColumnDef="vento">
+            <th mat-header-cell>Vento</th>
+            <td mat-cell>10 km/h</td>
+        </ng-container>
+        <ng-container matColumnDef="acao">
+            <th mat-header-cell>Ação</th>
+            <td mat-cell>Excluir</td>
+        </ng-container>
+
+        <tr mat-header-row></tr>
+        <tr mat-row *matRowDef="let row;"></tr>
+    </table> -->
 </body>
 
 

@@ -5,12 +5,7 @@
 export const environment = {
   production: false,
   weatherApiBaseUrl: 'https://api.openweathermap.org/data/2.5/weather',
-  XRapidAPIHostHeaderName: 'X-RapidAPI-Host',
-  XRapidAPIHostHeaderValue: 'open-weather13.p.rapidapi.com',
-  XRapidAPIKeyHeaderName: 'X-RapidAPI-Key',
   XRapidAPIKeyHeaderValue: '9a14287432aad576a14e169a8794456b'
-  // XRapidAPIKeyHeaderValue: 'b328a931c8mshfe8eaa143071459p1833a1jsn12eca060ac16'
-  // XRapidAPIHost: 'open-weather13.p.rapidapi.com'
 };
 
 /*
