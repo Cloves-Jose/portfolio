@@ -60,12 +60,6 @@
     </div>
     <div class="table">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-            <!-- Position Column -->
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef>Id</th>
-              <td mat-cell *matCellDef="let element">{{element.id}}</td>
-            </ng-container>
-          
             <!-- Name Column -->
             <ng-container matColumnDef="cidade">
               <th mat-header-cell *matHeaderCellDef>Cidade</th>
@@ -75,23 +69,23 @@
             <!-- Weight Column -->
             <ng-container matColumnDef="temperatura">
               <th mat-header-cell *matHeaderCellDef>Temperatura</th>
-              <td mat-cell *matCellDef="let element">{{element.temperatura}}</td>
+              <td mat-cell *matCellDef="let element">{{(weatherData.main.temp - 273.15).toFixed(0)}}ºC</td>
             </ng-container>
           
             <!-- Symbol Column -->
             <ng-container matColumnDef="chuva">
-              <th mat-header-cell *matHeaderCellDef>Chuva</th>
-              <td mat-cell *matCellDef="let element">{{element.chuva}}</td>
+              <th mat-header-cell *matHeaderCellDef>Temperatura máxima</th>
+              <td mat-cell *matCellDef="let element">{{(weatherData.main.temp_max - 273.15).toFixed(0)}}ºC</td>
             </ng-container>
 
             <ng-container matColumnDef="umidade">
                 <th mat-header-cell *matHeaderCellDef>Umidade</th>
-                <td mat-cell *matCellDef="let element">{{element.umidade}}</td>
+                <td mat-cell *matCellDef="let element">{{weatherData.main.humidity}}%</td>
             </ng-container>
 
             <ng-container matColumnDef="vento">
                 <th mat-header-cell *matHeaderCellDef>Vento</th>
-                <td mat-cell *matCellDef="let element">{{element.vento}}</td>
+                <td mat-cell *matCellDef="let element">{{weatherData.wind.speed}} km/h</td>
             </ng-container>
 
             <ng-container matColumnDef="acao">

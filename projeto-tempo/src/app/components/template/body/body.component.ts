@@ -7,7 +7,7 @@ import { MatTable } from '@angular/material/table';
 
 
 const ELEMENT_DATA: TableData[] = [
-  {id: '1', cidade: 'Garanhuns', temperatura: '20', chuva: '70', umidade: '80', vento: '3.09'}
+  {cidade: 'Garanhuns', temperatura: '20', chuva: '70', umidade: '80', vento: '3.09'}
 ];
 
 
@@ -18,12 +18,16 @@ const ELEMENT_DATA: TableData[] = [
 })
 export class BodyComponent implements OnInit {
 
-  constructor(private weatherService: WatherService) { }
+  private storage: Storage
+
+  constructor(private weatherService: WatherService) { 
+    this.storage = window.localStorage
+  }
 
   cityName: string = 'Natal';
   weatherData?: WeatherData;
   inputData?: InputData
-  displayedColumns: string[] = ['id', 'cidade', 'temperatura', 'chuva', 'umidade', 'vento', 'acao'];
+  displayedColumns: string[] = ['cidade', 'temperatura', 'chuva', 'umidade', 'vento', 'acao'];
   dataSource = [...ELEMENT_DATA];
 
   @ViewChild(MatTable) table: MatTable<TableData>;
@@ -58,6 +62,8 @@ export class BodyComponent implements OnInit {
     this.dataSource.push(ELEMENT_DATA[randomElementIndex]);
     this.table.renderRows();
   }
+
+  
 
   /**
    * Remove os elementos da tabela
