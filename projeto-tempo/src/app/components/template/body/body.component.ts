@@ -4,11 +4,7 @@ import { InputData } from 'src/app/models/input/city.model'
 import { TableData } from 'src/app/models/table/table.model';
 import { WatherService } from 'src/app/server/weather.service';
 import { MatTable } from '@angular/material/table';
-
-
-const ELEMENT_DATA: TableData[] = [
-  {cidade: 'Garanhuns', temperatura: '20', chuva: '70', umidade: '80', vento: '3.09'}
-];
+import { Observable } from 'rxjs'
 
 
 @Component({
@@ -27,21 +23,25 @@ export class BodyComponent implements OnInit {
   cityName: string = 'Natal';
   weatherData?: WeatherData;
   inputData?: InputData
-  displayedColumns: string[] = ['cidade', 'temperatura', 'chuva', 'umidade', 'vento', 'acao'];
-  dataSource = [...ELEMENT_DATA];
+  displayedColumns: string[] = ['name', 'temperatura', 'chuva', 'umidade', 'vento', 'acao'];
+  dataSource: WeatherData[] = []
 
   @ViewChild(MatTable) table: MatTable<TableData>;
   
   ngOnInit(): void {
-    this.getWheatherData(this.cityName)
+    this.getDataRender(this.cityName)
   }
 
   /**
    * Vai receber o input da barra de pesquisa
    */
   onSubmit() {
-    this.getWheatherData(this.cityName)
-    this.addData()
+    let result = this.getWheatherData(this.cityName)
+    result.subscribe(val => this.addData(val))
+    console.log(this.dataSource)
+    // this.addData()
+    // console.log(result)
+    // this.addData()
     this.cityName = '';
   }
 
@@ -51,19 +51,16 @@ export class BodyComponent implements OnInit {
    * @param nameCity 
    */
   getCity(nameCity: string) {
-    this.getWheatherData(nameCity)
+    this.getDataRender(nameCity)
   }
 
   /**
    * Adiiciona os elementos na tabela
    */
-  addData() {
-    const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
-    this.dataSource.push(ELEMENT_DATA[randomElementIndex]);
+  addData(result: WeatherData) {
+    this.dataSource.push(result);
     this.table.renderRows();
   }
-
-  
 
   /**
    * Remove os elementos da tabela
@@ -74,17 +71,41 @@ export class BodyComponent implements OnInit {
   }
 
   /**
+   * Realiza a consulta por meio do nome
+   * @param cityName 
+   * @returns 
+   */
+  private getWheatherData(cityName:string) {
+    let result = this.weatherService.getWeatherData(cityName)
+    return result
+  }
+
+  /**
+   * Faz a renderização da tela com
+   * as informações de temperatura
+   * @param city 
+   */
+  private getDataRender(city: string) {
+    this.getWheatherData(city)
+    .subscribe({
+      next: (response: any) => {
+        this.weatherData = response
+      }
+    })
+  }
+
+  /**
    * Realiza a consulta pelo nome 
    * de uma cidade
    * @param cityName 
    */
-  private getWheatherData(cityName:string) {
-    this.weatherService.getWeatherData(cityName)
-    .subscribe({
-      next: (response: any) => {
-        this.weatherData = response
-        console.log(response)
-      }
-    });
-  }
+  // private getWheatherData(cityName:string) {
+  //   this.weatherService.getWeatherData(cityName)
+  //   .subscribe({
+  //     next: (response: any) => {
+  //       this.weatherData = response
+  //       // console.log(response)
+  //     }
+  //   });
+  // }
 }

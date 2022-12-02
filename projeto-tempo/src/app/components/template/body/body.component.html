@@ -61,31 +61,31 @@
     <div class="table">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
             <!-- Name Column -->
-            <ng-container matColumnDef="cidade">
+            <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef>Cidade</th>
-              <td mat-cell *matCellDef="let element">{{weatherData.name}}</td>
+              <td mat-cell *matCellDef="let element">{{element.name}}</td>
             </ng-container>
           
             <!-- Weight Column -->
             <ng-container matColumnDef="temperatura">
               <th mat-header-cell *matHeaderCellDef>Temperatura</th>
-              <td mat-cell *matCellDef="let element">{{(weatherData.main.temp - 273.15).toFixed(0)}}ºC</td>
+              <td mat-cell *matCellDef="let element">{{(element.main.temp - 273.15).toFixed(0)}}ºC</td>
             </ng-container>
           
             <!-- Symbol Column -->
             <ng-container matColumnDef="chuva">
               <th mat-header-cell *matHeaderCellDef>Temperatura máxima</th>
-              <td mat-cell *matCellDef="let element">{{(weatherData.main.temp_max - 273.15).toFixed(0)}}ºC</td>
+              <td mat-cell *matCellDef="let element">{{(element.main.temp_max - 273.15).toFixed(0)}}ºC</td>
             </ng-container>
 
             <ng-container matColumnDef="umidade">
                 <th mat-header-cell *matHeaderCellDef>Umidade</th>
-                <td mat-cell *matCellDef="let element">{{weatherData.main.humidity}}%</td>
+                <td mat-cell *matCellDef="let element">{{element.main.humidity}}%</td>
             </ng-container>
 
             <ng-container matColumnDef="vento">
                 <th mat-header-cell *matHeaderCellDef>Vento</th>
-                <td mat-cell *matCellDef="let element">{{weatherData.wind.speed}} km/h</td>
+                <td mat-cell *matCellDef="let element">{{element.wind.speed}} km/h</td>
             </ng-container>
 
             <ng-container matColumnDef="acao">
