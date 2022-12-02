@@ -15,7 +15,7 @@ export class BodyComponent implements OnInit {
 
   constructor(private weatherService: WatherService) {}
 
-  cityName: string = 'Natal';
+  cityName: string = 'Garanhuns';
   weatherData?: WeatherData;
 
   displayedColumns: string[] = ['name', 'temperatura', 'chuva', 'umidade', 'vento', 'acao'];
