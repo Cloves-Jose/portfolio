@@ -11,14 +11,12 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BodyComponent } from './components/template/body/body.component';
-import { ButtonComponent } from './components/template/button/button.component';
-// import { MatTable } from '@angular/material/table'
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BodyComponent,
-    ButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +28,7 @@ import { ButtonComponent } from './components/template/button/button.component';
     HttpClientModule,
     MatAutocompleteModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

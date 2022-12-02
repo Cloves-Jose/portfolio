@@ -1,7 +1,7 @@
 <body class="container" *ngIf="weatherData">
     <div class="search">
         <form #form="ngForm" (submit)="onSubmit()">
-            <input type="text" placeholder="Digite uma cidade" name="city" [(ngModel)]="cityName">
+            <input type="text" class="example-form-field" placeholder="Digite uma cidade" name="city" [(ngModel)]="cityName">
         </form>
     </div>
     <div>
@@ -11,7 +11,7 @@
                     <h1 class="title">{{ weatherData.name }}</h1>
                 </div>
                 <div class="degreeContainer">
-                    <h1 class="degree">{{ (weatherData.main.temp - 273.15).toFixed(0) }}º</h1>
+                    <h1 class="degree">{{ (weatherData.main.temp - 273.15).toFixed(0) }}ºC</h1>
                 </div>
                 <div class="subtitleContainer">
                     <div>

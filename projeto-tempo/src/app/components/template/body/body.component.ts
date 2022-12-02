@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { WeatherData } from 'src/app/models/weather/weather.model';
-import { InputData } from 'src/app/models/input/city.model'
 import { TableData } from 'src/app/models/table/table.model';
 import { WatherService } from 'src/app/server/weather.service';
 import { MatTable } from '@angular/material/table';
-import { Observable } from 'rxjs'
 
 
 @Component({
@@ -14,15 +12,12 @@ import { Observable } from 'rxjs'
 })
 export class BodyComponent implements OnInit {
 
-  private storage: Storage
 
-  constructor(private weatherService: WatherService) { 
-    this.storage = window.localStorage
-  }
+  constructor(private weatherService: WatherService) {}
 
   cityName: string = 'Natal';
   weatherData?: WeatherData;
-  inputData?: InputData
+
   displayedColumns: string[] = ['name', 'temperatura', 'chuva', 'umidade', 'vento', 'acao'];
   dataSource: WeatherData[] = []
 
@@ -38,10 +33,6 @@ export class BodyComponent implements OnInit {
   onSubmit() {
     let result = this.getWheatherData(this.cityName)
     result.subscribe(val => this.addData(val))
-    console.log(this.dataSource)
-    // this.addData()
-    // console.log(result)
-    // this.addData()
     this.cityName = '';
   }
 
@@ -93,19 +84,4 @@ export class BodyComponent implements OnInit {
       }
     })
   }
-
-  /**
-   * Realiza a consulta pelo nome 
-   * de uma cidade
-   * @param cityName 
-   */
-  // private getWheatherData(cityName:string) {
-  //   this.weatherService.getWeatherData(cityName)
-  //   .subscribe({
-  //     next: (response: any) => {
-  //       this.weatherData = response
-  //       // console.log(response)
-  //     }
-  //   });
-  // }
 }

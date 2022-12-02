@@ -1,5 +1,6 @@
 .container {
     background: linear-gradient(to right, rgba(0,72,158,255), rgba(3,132,193,255), rgba(3,146,202,255), rgba(3,174,218,255));
+    background-repeat: repeat-y;
 }
 
 .search {
@@ -7,6 +8,14 @@
     justify-content: center;
     padding-top: 15em;
     padding-bottom: 2em;
+}
+
+.example-form-field {
+    width: 500px;
+    height: 30px;
+    font-size: 30px;
+    border-radius: 10px;
+    padding-left: 15px;
 }
 
 .form-field {
@@ -65,9 +74,11 @@
 }
 
 .table {
+    background: linear-gradient(to right, rgba(0,72,158,255), rgba(3,132,193,255), rgba(3,146,202,255), rgba(3,174,218,255));
     display: flex;
     justify-content: center;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .demo-table {
