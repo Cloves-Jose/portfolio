@@ -31,7 +31,7 @@ export class BodyComponent implements OnInit {
    * Vai receber o input da barra de pesquisa
    */
   onSubmit() {
-    let result = this.getWheatherData(this.cityName)
+    let result = this.getWeatherData(this.cityName)
     result.subscribe(val => this.addData(val))
     this.cityName = '';
   }
@@ -66,10 +66,11 @@ export class BodyComponent implements OnInit {
    * @param cityName 
    * @returns 
    */
-  private getWheatherData(cityName:string) {
+  private getWeatherData(cityName:string) {
     let result = this.weatherService.getWeatherData(cityName)
     return result
   }
+
 
   /**
    * Faz a renderização da tela com
@@ -77,7 +78,7 @@ export class BodyComponent implements OnInit {
    * @param city 
    */
   private getDataRender(city: string) {
-    this.getWheatherData(city)
+    this.getWeatherData(city)
     .subscribe({
       next: (response: any) => {
         this.weatherData = response
