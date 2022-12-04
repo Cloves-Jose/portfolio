@@ -11,12 +11,15 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BodyComponent } from './components/template/body/body.component';
+import { VelocityPipe } from './pipes/velocity.pipe';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BodyComponent,
+    VelocityPipe,
   ],
   imports: [
     BrowserModule,

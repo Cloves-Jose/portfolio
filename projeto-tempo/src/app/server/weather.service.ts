@@ -28,6 +28,8 @@ export class WatherService {
       + cityName 
       + '&appid=' 
       + environment.XRapidAPIKeyHeaderValue
+      + '&units='
+      + 'metric'
     )
     .pipe(
       retry(2)

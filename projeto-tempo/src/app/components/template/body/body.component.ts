@@ -3,6 +3,7 @@ import { WeatherData } from 'src/app/models/weather/weather.model';
 import { TableData } from 'src/app/models/table/table.model';
 import { WatherService } from 'src/app/server/weather.service';
 import { MatTable } from '@angular/material/table';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -31,8 +32,12 @@ export class BodyComponent implements OnInit {
    * Vai receber o input da barra de pesquisa
    */
   onSubmit() {
-    let result = this.getWheatherData(this.cityName)
-    result.subscribe(val => this.addData(val))
+    this.getDataRender(this.cityName) 
+    this.getWeatherData(this.cityName).subscribe({
+      next: (response: any) => {
+        this.addData(response)
+      }
+    })
     this.cityName = '';
   }
 
@@ -48,7 +53,7 @@ export class BodyComponent implements OnInit {
   /**
    * Adiiciona os elementos na tabela
    */
-  addData(result: WeatherData) {
+  addData(result: any) {
     this.dataSource.push(result);
     this.table.renderRows();
   }
@@ -66,10 +71,11 @@ export class BodyComponent implements OnInit {
    * @param cityName 
    * @returns 
    */
-  private getWheatherData(cityName:string) {
+  private getWeatherData(cityName:string): Observable<WeatherData> {
     let result = this.weatherService.getWeatherData(cityName)
     return result
   }
+
 
   /**
    * Faz a renderização da tela com
@@ -77,10 +83,11 @@ export class BodyComponent implements OnInit {
    * @param city 
    */
   private getDataRender(city: string) {
-    this.getWheatherData(city)
+    this.getWeatherData(city)
     .subscribe({
       next: (response: any) => {
         this.weatherData = response
+        this.cityName = ''
       }
     })
   }

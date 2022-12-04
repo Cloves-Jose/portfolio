@@ -11,14 +11,14 @@
                     <h1 class="title">{{ weatherData.name }}</h1>
                 </div>
                 <div class="degreeContainer">
-                    <h1 class="degree">{{ (weatherData.main.temp - 273.15).toFixed(0) }}ºC</h1>
+                    <h1 class="degree">{{ (weatherData.main.temp).toFixed(0) }}ºC</h1>
                 </div>
                 <div class="subtitleContainer">
                     <div>
                         <h3 class="subTitle">Umidade: {{weatherData.main.humidity}}%</h3>
                     </div>
                     <div>
-                        <h3 class="subTitle">Vento: {{weatherData.wind.speed}} km/h</h3>
+                        <h3 class="subTitle">Vento: {{weatherData.wind.speed | velocity}} km/h</h3>
                     </div>
                 </div>
             </div>
@@ -69,13 +69,13 @@
             <!-- Weight Column -->
             <ng-container matColumnDef="temperatura">
               <th mat-header-cell *matHeaderCellDef>Temperatura</th>
-              <td mat-cell *matCellDef="let element">{{(element.main.temp - 273.15).toFixed(0)}}ºC</td>
+              <td mat-cell *matCellDef="let element">{{ (element.main.temp).toFixed(0) }}ºC</td>
             </ng-container>
           
             <!-- Symbol Column -->
             <ng-container matColumnDef="chuva">
               <th mat-header-cell *matHeaderCellDef>Temperatura máxima</th>
-              <td mat-cell *matCellDef="let element">{{(element.main.temp_max - 273.15).toFixed(0)}}ºC</td>
+              <td mat-cell *matCellDef="let element">{{ (element.main.temp_max).toFixed(0) }}ºC</td>
             </ng-container>
 
             <ng-container matColumnDef="umidade">
@@ -85,7 +85,7 @@
 
             <ng-container matColumnDef="vento">
                 <th mat-header-cell *matHeaderCellDef>Vento</th>
-                <td mat-cell *matCellDef="let element">{{element.wind.speed}} km/h</td>
+                <td mat-cell *matCellDef="let element">{{element.wind.speed | velocity}} km/h</td>
             </ng-container>
 
             <ng-container matColumnDef="acao">
@@ -104,5 +104,3 @@
           </table>
     </div>
 </body>
-
-
