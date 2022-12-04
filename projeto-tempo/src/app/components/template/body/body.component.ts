@@ -81,7 +81,8 @@ export class BodyComponent implements OnInit {
     this.getWeatherData(city)
     .subscribe({
       next: (response: any) => {
-        this.weatherData = response
+        this.weatherData = response;
+        this.cityName = '';
       }
     })
   }
