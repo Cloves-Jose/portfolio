@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   weatherApiBaseUrl: 'https://api.openweathermap.org/data/2.5/weather',
-  XRapidAPIKeyHeaderValue: '9a14287432aad576a14e169a8794456b'
+  XRapidAPIKeyHeaderValue: ''
 };
 
 /*
